@@ -47,3 +47,54 @@
 ```
 
 ---
+
+#### 修改個人資訊
+說明：
+
+
+| General | 說明 | 
+| --------------- | --- |
+| Request Method  | PATCH |
+| Request URL     | http://localhost:8080/user-account/profile |
+
+| Headers | 說明 | 
+| ------------- | ------------ |
+| X-Auth-Token  | 登入者的token |
+
+
+**JSON：**
+| 參數名稱 | 參數型態 | 說明 | 範例 | 備註 |
+| -------- | -------- | -------- | -------- | -------- |
+| userId | String | 使用者Google帳號 | 10946011@ntub.edu.tw | 必填 |
+| userSex | int | 性別(男:0/女:1) | 1 | 非必填 |
+| department | String | 所屬科系/班級 | 資管系 | 非必填 |
+
+**範例：**
+```json=
+{
+    "userId":"10946011@ntub.edu.tw",
+    "userSex":"1",
+    "department":"資管系"
+}
+```
+
+    
+**回傳：**
+| 參數名稱 | 參數型態 | 說明 | 範例 | 備註 | 
+| ------ | ------- | --------- | ---- | --- |
+| result | Boolean | API執行狀態 | true |    |
+| errorCode | String | API執行異常代碼 | "" |    |
+| message | String | API執行狀態說明 | "修改成功" |    |
+| data | Optional<Object> |  |  |    |
+
+**範例：**
+```json=
+{
+    "result": true,
+    "errorCode": "",
+    "message": "修改成功",
+    "data": {}
+}
+```
+
+---
