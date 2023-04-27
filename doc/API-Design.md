@@ -170,3 +170,55 @@ Params
 
 ---
 
+
+
+#### 單查
+說明：查詢單一使用者帳號
+
+| General | 說明 | 
+| --------------- | --- |
+| Request Method  | GET |
+| Request URL     | http://localhost:8080/user-account/{{Id}}  |
+
+| Headers | 說明 | 
+| ------------- | ------------ |
+| X-Auth-Token  | 登入者的token |
+    
+Params
+
+| 參數名稱 | 參數型態 | 說明 | 範例 | 備註 |
+| -------- | -------- | -------- | -------- | -------- |
+| id     | String     | 使用者Google帳號     | 10946008@ntub.edu.tw |      |
+
+回傳
+
+| 參數名稱 | 參數型態 | 說明 | 範例 | 備註 |
+| -------- | -------- | -------- | -------- | -------- |
+| result     | Boolean | API執行狀態 | true |      |
+| errorCode     | String | API執行異常代碼 | "" |      |
+| message     | String | API執行狀態說明 | 查詢成功 |      |
+| data    | Optional < Object > | 回傳資料 |      |      |
+| userId  | String | 使用者Google帳號 |      |  |
+| userName | String | 使用者名稱 |    |  |
+| userSex | String | 性別(男/女) |    |  |
+| department | String     | 所屬科系/班級 |     |  |
+| role | String | 角色/權限 |      |      |
+| available | Boolean | 啟用狀態(啟用:1/不啟用:0) |      |      |
+
+**範例：**
+```json=
+{
+    "result": true,
+    "errorCode": "",
+    "message": "查詢成功",
+    "data": {
+        "userId": "10946011@ntub.edu.tw",
+        "userName": "周珮宣",
+        "userSex": "女",
+        "department": "四技資管三甲",
+        "role": "學生",
+        "available": true
+    }
+}
+```
+
