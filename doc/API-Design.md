@@ -222,3 +222,44 @@ Params
 }
 ```
 
+
+---
+
+
+#### 總頁數查詢
+說明：查詢人員管理總頁數
+
+| General | 說明 | 
+| --------------- | --- |
+| Request Method  | GET |
+| Request URL     | http://localhost:8080/user-account/count |
+
+| Headers | 說明 | 
+| ------------- | ------------ |
+| X-Auth-Token  | 登入者的token |
+
+
+回傳
+
+| 參數名稱 | 參數型態 | 說明 | 範例 | 備註 |
+| -------- | -------- | -------- | -------- | -------- |
+| result     | Boolean | API執行狀態 | true |      |
+| errorCode     | String | API執行異常代碼 | "" |      |
+| message     | String | API執行狀態說明 | 查詢成功 |      |
+| data    | Optional < Object > | 回傳資料 |      |      |
+| totalPage  | INT | 總頁數 |      |   |
+
+**範例：**
+
+```json=
+{
+    "result": true,
+    "errorCode": "",
+    "message": "查詢成功",
+    "data": {
+        "totalPage": 1
+    }
+}
+```
+
+---
