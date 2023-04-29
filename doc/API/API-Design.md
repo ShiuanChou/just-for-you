@@ -256,3 +256,41 @@
 ```
 
 ---
+
+#### 修改啟用狀態
+說明：將使用者狀態改成啟用或不啟用
+
+| General | 說明 | 
+| --------------- | --- |
+| Request Method  | PATCH |
+| Request URL     | http://localhost:8080/user-account?id={{Id}} |
+
+| Headers | 說明 | 
+| ------------- | ------------ |
+| X-Auth-Token  | 登入者的token |
+
+**Params**
+
+| 參數名稱 | 參數型態 | 說明 | 範例 | 備註 |
+| -------- | -------- | -------- | -------- | -------- |
+| id     | String     | 使用者Google帳號     | 10946008@ntub.edu.tw |      |
+    
+**回傳**
+
+| 參數名稱 | 參數型態 | 說明 | 範例 | 備註 |
+| -------- | -------- | -------- | -------- | -------- |
+| result     | Boolean | API執行狀態 | true |      |
+| errorCode     | String | API執行異常代碼 | "" |      |
+| message     | String | API執行狀態說明 | 查詢成功 |      |
+
+**範例：**
+```json=
+{
+    "result": true,
+    "errorCode": "",
+    "message": "修改成功",
+    "data": {}
+}
+```
+
+---
