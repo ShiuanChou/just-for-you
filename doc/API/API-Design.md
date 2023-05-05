@@ -377,11 +377,11 @@ Params
 
 | 參數名稱 | 參數型態 | 說明 | 範例 | 備註 |
 | -------- | -------- | -------- | -------- | -------- |
-| result     | Boolean | API執行狀態 | true |      |
-| errorCode     | String | API執行異常代碼 | "" |      |
-| message     | String | API執行狀態說明 | 查詢成功 |      |
-| data     | Optional< Object> | 回傳資料 |  |      |
-| totalPage     | INT | 總頁數 |  |      |
+| result     | Boolean            | API執行狀態    | true    |      |
+| errorCode  | String            | API執行異常代碼 | ""      |      |
+| message    | String            | API執行狀態說明 | 查詢成功 |      |
+| data       | Optional< Object> | 回傳資料        |         |      |
+| totalPage  | INT               | 總頁數          |         |      |
     
 **範例：**
 
