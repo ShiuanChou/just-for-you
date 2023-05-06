@@ -294,3 +294,106 @@
 ```
 
 ---
+
+#### 模糊查詢
+說明：根據使用者輸入的關鍵字查出相關帳號
+
+| General | 說明 | 
+| --------------- | --- |
+| Request Method  | GET |
+| Request URL     | http://localhost:8080/user-account/data?userId=&userName=&department=&page= |
+
+| Headers | 說明 | 
+| ------------- | ------------ |
+| X-Auth-Token  | 登入者的token |
+
+Params
+
+| 參數名稱 | 參數型態 | 說明 | 範例 | 備註 |
+| -------- | -------- | -------- | -------- | -------- |
+| userId     | String     | 使用者Google帳號   |  |      |
+| userName   | String     | 使用者名稱   | 李 |      |
+| department  | String     | 所屬科系/班級   |  |      |
+| page     | INT     | 頁碼   | 1 | 後端會設定一頁查詢幾筆 |
+    
+回傳
+
+| 參數名稱 | 參數型態 | 說明 | 範例 | 備註 |
+| -------- | -------- | -------- | -------- | -------- |
+| result     | Boolean | API執行狀態 | true |      |
+| errorCode     | String | API執行異常代碼 | "" |      |
+| message     | String | API執行狀態說明 | 查詢成功 |      |
+| data     | List< Object> | 回傳資料 |  |      |
+| userId     | String | 使用者Google帳號 |  |      |
+| userName     | String | 使用者名稱 |  |      |
+| userSex | String | 性別(男/女) |  | 後端需判斷 0:男/1:女 |
+| department     | String | 所屬科系/班級 |  |      |
+| role     | String | 角色/權限 |  | 對應codelist表role的desc |
+| available | Boolean | 啟用狀態(啟用:1/不啟用:0) |  |  |
+    
+**範例：**
+
+```json=
+{
+    "result": true,
+    "errorCode": "",
+    "message": "查詢成功",
+    "data": [
+     {
+            "userId": "10946038@ntub.edu.tw",
+            "userName": "李冠賢",
+            "userSex": "男",
+            "department": null,
+            "role": "學生",
+            "available": true
+        },
+     {
+            "userId": "10946012@ntub.edu.tw",
+            "userName": "李姍珊",
+            "userSex": "女",
+            "department": "四技資管三甲",
+            "role": "學生",
+            "available": true
+        }
+    ]
+}
+```
+
+---
+
+#### 模糊查詢的總頁數查詢
+說明：根據使用者輸入的關鍵字查出相關帳號，後端設定一頁幾筆後回傳共幾頁
+
+| General | 說明 | 
+| --------------- | --- |
+| Request Method  | GET |
+| Request URL     | http://localhost:8080/user-account/data?userId=&userName=&department= |
+
+| Headers | 說明 | 
+| ------------- | ------------ |
+| X-Auth-Token  | 登入者的token |
+    
+回傳
+
+| 參數名稱 | 參數型態 | 說明 | 範例 | 備註 |
+| -------- | -------- | -------- | -------- | -------- |
+| result     | Boolean            | API執行狀態    | true    |      |
+| errorCode  | String            | API執行異常代碼 | ""      |      |
+| message    | String            | API執行狀態說明 | 查詢成功 |      |
+| data       | Optional< Object> | 回傳資料        |         |      |
+| totalPage  | INT               | 總頁數          |         |      |
+    
+**範例：**
+
+```json=
+{
+    "result": true,
+    "errorCode": "",
+    "message": "查詢成功",
+    "data": {
+        "totalPage": 1
+    }
+}
+```
+
+---
