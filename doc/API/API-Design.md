@@ -397,3 +397,54 @@ Params
 ```
 
 ---
+
+## /summy-record
+### 摘要紀錄 
+#### 產生摘要
+說明：將使用者傳入的content傳送到open ai api摘要存至summary_record表的summary欄位
+同時也分類出諮商主題與情緒標籤，並分別存入資料庫
+
+| General | 說明 | 
+| --------------- | --- |
+| Request Method  | POST |
+| Request URL     | http://localhost:8080/summary-record |
+
+| Headers | 說明 | 
+| ------------- | ------------ |
+| X-Auth-Token  | 登入者的token |
+
+**JSON：**
+    
+| 參數名稱 | 參數型態 | 說明 | 範例 | 備註 |
+| -------- | -------- | -------- | -------- | -------- |
+| content | TEXT | 諮商內容記錄 | 這次針對A學生的諮商... | 必填 |
+
+**範例：**
+
+```json=
+{
+    "content":"吵架好累，最近跟男友吵架，跟另一半吵架都怎麼和好呢？雖然只是小事，但有時候只是想男友哄哄我 嗚嗚嗚。"
+}
+```
+    
+**回傳：**
+
+| 參數名稱 | 參數型態 | 說明 | 範例 | 備註 | 
+| ------ | ------- | --------- | ---- | --- |
+| result | Boolean | API執行狀態 | true |    |
+| errorCode | String | API執行異常代碼 | "" |    |
+| message | String | API執行狀態說明 | "查詢成功" |    |
+| data | Optional<Object> | 回傳資料 |  |    |
+    
+**範例：**
+
+```json=
+{
+    "result": true,
+    "errorCode": "",
+    "message": "摘要成功",
+    "data": {}
+}
+```
+
+---
