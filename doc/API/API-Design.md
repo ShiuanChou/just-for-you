@@ -448,3 +448,77 @@ Params
 ```
 
 ---
+
+#### 時間軸、摘要紀錄查詢
+說明：用學號或姓名查出該學生的時間軸及內容摘要，其中學號是針對user_account表的user_id欄位做Like查詢
+
+| General | 說明 | 
+| --------------- | --- |
+| Request Method  | GET |
+| Request URL     | http://localhost:8080/summary-record?userId=&userName= |
+
+| Headers | 說明 | 
+| ------------- | ------------ |
+| X-Auth-Token  | 登入者的token |
+
+Params
+
+| 參數名稱 | 參數型態 | 說明 | 範例 | 備註 |
+| -------- | -------- | -------- | -------- | -------- |
+| userId     | String     | 學號   | 10946011  | 非必填     |
+| userName   | String     | 姓名   | 周珮宣 |  非必填    |
+    
+回傳
+
+| 參數名稱 | 參數型態 | 說明 | 範例 | 備註 |
+| -------- | -------- | -------- | -------- | -------- |
+| result     | Boolean | API執行狀態 | true |      |
+| errorCode     | String | API執行異常代碼 | "" |      |
+| message     | String | API執行狀態說明 | 查詢成功 |      |
+| data     | List<Object> | 回傳資料 |  |      |
+| userId     | String | 使用者Google帳號 | 10946011@ntub.edu.tw |      |
+| userName     | String | 使用者名稱 | 周珮宣 |      |
+| summaryRecord  | List<Object> | 回傳時間軸、內容摘要 |  |      |
+| sId     | INT | 摘要紀錄表流水號 | 1 |      |
+| establishTime | DATATIME | 對話建立時間(時間軸) | 2023-03-19 10:59:19 |      |
+| summy     | TEXT | 內容摘要 | 最近我心情很糟... |      |
+| consultationContent | TEXT | 諮商內容紀錄 | 針對A學生的... |   可能會是null   |
+| modifyId     | String | 新增或修改的老師 | user_001 | 如果modifyId沒資料就抓createId     |
+
+    
+**範例：**
+
+```json=
+{
+    "result": true,
+    "errorCode": "",
+    "message": "查詢成功",
+    "data": [
+        {
+            "userId": "10946011@ntub.edu.tw",
+            "userName": "周珮宣",
+            "summaryRecord": [
+                {
+                    "sId": 1,
+                    "establishTime": "2023-03-19 10:59:19",
+                    "summy": "最近我跟男友吵架，雖然只是小事，但我想男友能哄哄我，不知道該如何和好。",
+                    "consultationContent": "針對A學生的...",
+                    "modifyId": "user_001"
+                },
+                {
+                    "sId": 2,
+                    "establishTime": "2023-04-30 10:59:19",
+                    "summy": "最近我心情很糟，不知道怎麼緩解這個情緒。",
+                    "consultationContent": null,
+                    "modifyId": "user_001"
+
+
+                }
+            ]
+        }
+    ]
+}
+```
+    
+---
+    
