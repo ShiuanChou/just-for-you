@@ -522,3 +522,67 @@ Params
     
 ---
     
+#### 諮商內容紀錄查詢
+說明：用sId抓出更詳細的資訊(學生輸入的內容、內容摘要)，以做諮商內容紀錄
+
+| General | 說明 | 
+| --------------- | --- |
+| Request Method  | GET |
+| Request URL     | http://localhost:8080/summary-record/{{sId}} |
+
+| Headers | 說明 | 
+| ------------- | ------------ |
+| X-Auth-Token  | 登入者的token |
+
+Params
+
+| 參數名稱 | 參數型態 | 說明 | 範例 | 備註 |
+| -------- | -------- | -------- | -------- | -------- |
+| sId     | INT     | 摘要紀錄表流水號   | 1 |      |
+    
+回傳
+
+| 參數名稱 | 參數型態 | 說明 | 範例 | 備註 |
+| -------- | -------- | -------- | -------- | -------- |
+| result     | Boolean | API執行狀態 | true |      |
+| errorCode     | String | API執行異常代碼 | "" |      |
+| message     | String | API執行狀態說明 | 查詢成功 |      |
+| data     | Optional<Object> | 回傳資料 |  |      |
+| sId     | INT | 摘要紀錄表流水號 | 1 |      |
+| content     | TEXT | 原內容 | 吵架好累，最近跟男友吵架，跟另一半吵架都怎麼和好呢？雖然只是小事，但有時候只是想男友哄哄我 嗚嗚。 |      |
+| summary     | TEXT | 內容摘要 | 最近我跟男友吵架，雖然只是小事，但我想男友能哄哄我，不知道該如何和好。 |      |
+| establishTime     | DATETIME | 對話建立時間(時間軸) | 2023-03-19 10:59:19 |      |
+| consultationContent     | TEXT | 諮商內容紀錄 | 這次針對A學生的諮商... |      |
+| emotionTag     | List<Object> | 回傳情緒標籤 |  |      |
+| eId     | INT | 情緒標籤流水號 | 1 |      |
+| emotion     | String | 情緒標籤 | 悲傷 |  對應codelist的desc    |
+
+    
+**範例：**
+
+```json=
+{
+    "result": true,
+    "errorCode": "",
+    "message": "查詢成功",
+    "data": {
+        "sId": 1,
+        "content": "吵架好累，最近跟男友吵架，跟另一半吵架都怎麼和好呢？雖然只是小事，但有時候只是想男友哄哄我 嗚嗚嗚。",
+        "summary": "最近我跟男友吵架，雖然只是小事，但我想男友能哄哄我，不知道該如何和好。",
+        "establishTime": "2023-03-19 10:59:19",
+        "consultationContent" : "這次針對A學生的諮商...",
+        "emotionTags": [
+                {
+                    "eId": 1,
+                    "emotion": "悲傷"
+                },
+                {
+                    "eId":  2,
+                    "emotion": "失望"
+                }
+            ]
+    }
+}
+```
+    
+---
