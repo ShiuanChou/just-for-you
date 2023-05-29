@@ -586,3 +586,101 @@ Params
 ```
     
 ---
+
+## /consultation-record
+### 諮商內容紀錄
+#### 新增諮商內容記錄
+說明：讓老師可以針對某一學生的情況做諮商內容紀錄
+
+| General | 說明 | 
+| --------------- | --- |
+| Request Method  | POST |
+| Request URL     | http://localhost:8080/consultation-record |
+
+| Headers | 說明 | 
+| ------------- | ------------ |
+| X-Auth-Token  | 登入者的token |
+
+JSON
+
+| 參數名稱 | 參數型態 | 說明 | 範例 | 備註 |
+| -------- | -------- | -------- | -------- | -------- |
+| sId     | INT     | 對應摘要紀錄表的s_id   | 1 |  必填    |
+| content     | TEXT     | 諮商內容記錄   | 這次針對A學生的諮商... |  必填    |
+
+**範例：**
+
+```json=
+{
+    "sId": 1,
+    "content":"這次針對A學生的諮商..."
+}
+```
+
+**回傳：**
+
+| 參數名稱 | 參數型態 | 說明 | 範例 | 備註 | 
+| ------ | ------- | --------- | ---- | --- |
+| result | Boolean | API執行狀態 | true |    |
+| errorCode | String | API執行異常代碼 | "" |    |
+| message | String | API執行狀態說明 | "新增成功" |    |
+| data | Optional< Object> |  |  |    |
+
+**範例：**
+```json=
+{
+    "result": true,
+    "errorCode": "",
+    "message": "新增成功",
+    "data": {}
+}
+```
+
+---
+
+#### 修改諮商內容記錄
+說明：讓老師可以針對某一學生的諮商內容紀錄進行修改
+
+| General | 說明 | 
+| --------------- | --- |
+| Request Method  | PATCH |
+| Request URL     | http://localhost:8080/consultation-record |
+
+| Headers | 說明 | 
+| ------------- | ------------ |
+| X-Auth-Token  | 登入者的token |
+
+JSON
+
+| 參數名稱 | 參數型態 | 說明 | 範例 | 備註 |
+| -------- | -------- | -------- | -------- | -------- |
+| sId     | INT     | 對應摘要紀錄表的s_id   | 1 |  必填    |
+| content     | TEXT     | 諮商內容記錄   | 這次針對A學生的諮商... |  必填    |
+
+**範例：**
+
+```json=
+{
+    "sId": 1,
+    "content":"這次針對A學生的諮商..."
+}
+```
+
+**回傳：**
+
+| 參數名稱 | 參數型態 | 說明 | 範例 | 備註 | 
+| ------ | ------- | --------- | ---- | --- |
+| result | Boolean | API執行狀態 | true |    |
+| errorCode | String | API執行異常代碼 | "" |    |
+| message | String | API執行狀態說明 | "修改成功" |    |
+| data | Optional< Object> |  |  |    |
+
+**範例：**
+```json=
+{
+    "result": true,
+    "errorCode": "",
+    "message": "修改成功",
+    "data": {}
+}
+```
